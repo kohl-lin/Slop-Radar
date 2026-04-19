@@ -41,7 +41,7 @@ export default function ResultPage() {
 
       {loading && (
         <div className="text-center">
-          <PixelBeetle size={80} rolling showScene className="mx-auto" />
+          <PixelBeetle size={80} showScene className="mx-auto" />
           <p className="font-pixel text-[10px] text-[var(--text-muted)] mt-3">
             LOADING RESULT...
           </p>

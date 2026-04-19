@@ -38,7 +38,7 @@ export default function Home() {
     <main className="flex-1 flex flex-col items-center px-4 py-12 relative sand-texture">
       {/* Hero */}
       <div className="text-center mb-10">
-        <PixelBeetle size={180} showScene rolling className="mx-auto mb-2" />
+        <PixelBeetle size={180} showScene className="mx-auto mb-2" />
         <h1 className="font-pixel text-xl md:text-2xl text-[var(--brown)] tracking-wider mb-3">
           SLOP RADAR
         </h1>
@@ -64,7 +64,7 @@ export default function Home() {
         >
           {loading ? (
             <span className="inline-flex items-center gap-2 justify-center">
-              <PixelBeetle size={20} rolling className="inline-block" />
+              <PixelBeetle size={20} className="inline-block" />
               ANALYZING...
             </span>
           ) : (
