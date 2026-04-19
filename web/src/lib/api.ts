@@ -32,8 +32,14 @@ export async function analyzeContent(
   });
 
   if (!resp.ok) {
-    const detail = await resp.text();
-    throw new Error(`Analysis failed (${resp.status}): ${detail}`);
+    let message: string;
+    try {
+      const body = await resp.json();
+      message = body.detail || JSON.stringify(body);
+    } catch {
+      message = await resp.text();
+    }
+    throw new Error(message);
   }
 
   return resp.json();

@@ -54,7 +54,7 @@ export default function Home() {
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder={"Paste a tweet, URL, or any AI news text...\n\ne.g. \"🔥 THIS CHANGES EVERYTHING — GPT-5 just dropped!\""}
+          placeholder={"Paste a tweet, article URL, or any AI news text...\n\ne.g. https://mp.weixin.qq.com/s/xxx\nor \"🔥 THIS CHANGES EVERYTHING — GPT-5 just dropped!\""}
           className="w-full h-36 bg-[var(--cream)] border-2 border-[var(--sand-dark)] focus:border-[var(--accent)] text-[var(--text-primary)] text-sm p-4 rounded-lg resize-none outline-none transition-colors placeholder:text-[var(--text-muted)]"
         />
         <button
