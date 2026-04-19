@@ -34,7 +34,7 @@ export default function ResultPage() {
         <a href="/" className="inline-block">
           <PixelBeetle size={64} showScene className="mx-auto" />
           <h1 className="font-pixel text-lg text-[var(--brown)] tracking-wider mt-2">
-            SLOP RADAR
+            AI SLOP RADAR
           </h1>
         </a>
       </div>

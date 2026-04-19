@@ -40,7 +40,7 @@ export default function Home() {
       <div className="text-center mb-10">
         <PixelBeetle size={180} showScene className="mx-auto mb-2" />
         <h1 className="font-pixel text-xl md:text-2xl text-[var(--brown)] tracking-wider mb-3">
-          SLOP RADAR
+          AI SLOP RADAR
         </h1>
         <p className="text-[var(--text-secondary)] max-w-md text-sm leading-relaxed">
           Fight <span className="text-[var(--red)] font-semibold">GIGO</span>. Paste any AI

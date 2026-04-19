@@ -63,7 +63,7 @@ export default function ScoreCard({ data }: { data: AnalyzeResult }) {
       <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-dashed border-[var(--sand-dark)]">
         <PixelBeetle size={40} />
         <span className="font-pixel text-sm text-[var(--accent)] tracking-wide">
-          SLOP RADAR
+          AI SLOP RADAR
         </span>
       </div>
 
