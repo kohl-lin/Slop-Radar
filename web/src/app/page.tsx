@@ -38,7 +38,7 @@ export default function Home() {
     <main className="flex-1 flex flex-col items-center px-4 py-12 relative sand-texture">
       {/* Hero */}
       <div className="text-center mb-10">
-        <PixelBeetle size={180} showScene rolling={false} className="mx-auto mb-2" />
+        <PixelBeetle size={180} showScene rolling className="mx-auto mb-2" />
         <h1 className="font-pixel text-xl md:text-2xl text-[var(--brown)] tracking-wider mb-3">
           SLOP RADAR
         </h1>
@@ -117,7 +117,7 @@ export default function Home() {
               </p>
             </div>
             <div className="desert-card rounded-lg p-4">
-              <div className="text-2xl mb-2">🌵</div>
+              <div className="text-2xl mb-2">💩</div>
               <div className="font-pixel text-[8px] text-[var(--brown)] mb-1">
                 SLOP
               </div>
