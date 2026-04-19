@@ -4,12 +4,12 @@ import os
 import json
 from openai import AsyncOpenAI
 
-client = AsyncOpenAI(
-    api_key=os.getenv("COMPASS_API_KEY", ""),
-    base_url="https://compass.llm.shopee.io/compass-api/v1",
-)
+OPENAI_BASE = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+OPENAI_KEY = os.getenv("OPENAI_API_KEY", "")
+LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o-mini")
+LLM_PROVIDER_HEADER = os.getenv("LLM_PROVIDER_HEADER", "")
 
-PROVIDER_HEADER = {"Provider": "OpenAI"}
+client = AsyncOpenAI(api_key=OPENAI_KEY, base_url=OPENAI_BASE)
 
 SYSTEM_PROMPT = """You are an AI content quality analyst. You evaluate social media posts about AI/ML technology.
 
@@ -40,14 +40,18 @@ Return ONLY valid JSON, no markdown fences."""
 
 
 async def score_content(text: str) -> dict:
+    extra = {}
+    if LLM_PROVIDER_HEADER:
+        extra["extra_headers"] = {"Provider": LLM_PROVIDER_HEADER}
+
     response = await client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=LLM_MODEL,
         max_tokens=300,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"Evaluate this post:\n\n{text}"},
         ],
-        extra_headers=PROVIDER_HEADER,
+        **extra,
     )
 
     raw = response.choices[0].message.content.strip()
