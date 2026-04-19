@@ -17,12 +17,6 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
 }
 
-# Domains that require JS rendering — simple HTTP GET won't work
-_JS_REQUIRED_DOMAINS = [
-    "mp.weixin.qq.com",
-    "weixin.qq.com",
-]
-
 BOILERPLATE_SIGNALS = [
     "placeholder", "interface snippet", "social media button",
     "var msg", "var appuin", "window.__INITIAL_STATE",
@@ -45,13 +39,6 @@ def looks_like_url(text: str) -> bool:
     # URL should be the dominant part of the input
     non_url_text = text.replace(url, "").strip(" ，。,.")
     return len(non_url_text) < 20
-
-
-def _is_js_rendered_domain(url: str) -> bool:
-    for domain in _JS_REQUIRED_DOMAINS:
-        if domain in url:
-            return True
-    return False
 
 
 def _is_boilerplate(text: str) -> bool:
@@ -102,12 +89,6 @@ async def fetch_url_content(url: str) -> Tuple[Optional[str], Optional[str]]:
 
     Returns (text, error_hint). If text is None, error_hint explains why.
     """
-    if _is_js_rendered_domain(url):
-        return None, (
-            "WeChat articles require JavaScript to load content. "
-            "Please open the article, copy the text, and paste it here instead."
-        )
-
     try:
         async with httpx.AsyncClient(
             timeout=15.0,
