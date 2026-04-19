@@ -34,6 +34,7 @@ class ScoreExplanation(BaseModel):
 
 class AnalyzeResponse(BaseModel):
     content_hash: str
+    is_ai_related: bool = True
     signal: ScoreExplanation
     novelty: ScoreExplanation
     slop: ScoreExplanation
@@ -81,6 +82,7 @@ async def analyze(req: AnalyzeRequest):
 
     response = AnalyzeResponse(
         content_hash=content_hash,
+        is_ai_related=llm_result.get("is_ai_related", True),
         signal=ScoreExplanation(
             score=llm_result["signal_score"],
             reason=llm_result["signal_reason"],

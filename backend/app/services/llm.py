@@ -14,6 +14,7 @@ client = AsyncOpenAI(api_key=OPENAI_KEY, base_url=OPENAI_BASE)
 SYSTEM_PROMPT = """You are an AI content quality analyst. You evaluate social media posts about AI/ML technology.
 
 Given a post, you must return a JSON object with exactly these fields:
+- is_ai_related: boolean. Is this content primarily about AI, ML, LLMs, or related technology? False for healthcare, politics, sports, finance, etc. unless they specifically discuss AI applications.
 - signal_score: 0-10 float. How much genuine, useful signal does this contain?
 - signal_reason: One sentence explaining the score.
 - adds_value: boolean. Does this add original insight beyond restating known information?
@@ -69,6 +70,7 @@ async def score_content(text: str) -> dict:
         }
 
     return {
+        "is_ai_related": bool(result.get("is_ai_related", True)),
         "signal_score": float(result.get("signal_score", 5)),
         "signal_reason": result.get("signal_reason", "No reason provided."),
         "adds_value": bool(result.get("adds_value", True)),

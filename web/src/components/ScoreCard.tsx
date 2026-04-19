@@ -67,6 +67,15 @@ export default function ScoreCard({ data }: { data: AnalyzeResult }) {
         </span>
       </div>
 
+      {/* Non-AI warning */}
+      {!data.is_ai_related && (
+        <div className="mb-4 px-3 py-2 rounded bg-[var(--yellow)] bg-opacity-15 border border-[var(--yellow)] border-opacity-40">
+          <p className="font-pixel text-[9px] text-[var(--brown)]">
+            ⚠️ This content does not appear to be AI-related. Scores may be less accurate.
+          </p>
+        </div>
+      )}
+
       {/* Summary */}
       <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed">
         {data.summary}

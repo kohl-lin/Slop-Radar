@@ -14,6 +14,7 @@ export interface ScoreExplanation {
 
 export interface AnalyzeResult {
   content_hash: string;
+  is_ai_related: boolean;
   signal: ScoreExplanation;
   novelty: ScoreExplanation;
   slop: ScoreExplanation;
