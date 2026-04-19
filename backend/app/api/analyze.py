@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field
 from app.services.cache import get_cached, set_cached
 from app.services.llm import score_content
 from app.services.search import find_sources
-from app.services.scraper import looks_like_url, fetch_url_content
+from app.services.scraper import looks_like_url, extract_url, fetch_url_content
 
 router = APIRouter()
 
@@ -52,13 +52,10 @@ async def analyze(req: AnalyzeRequest):
     source_url = req.url
 
     if looks_like_url(text):
-        source_url = text
-        fetched = await fetch_url_content(text)
+        source_url = extract_url(text) or text
+        fetched, error_hint = await fetch_url_content(source_url)
         if not fetched:
-            raise HTTPException(
-                status_code=422,
-                detail="Could not fetch content from this URL. Please paste the article text directly.",
-            )
+            raise HTTPException(status_code=422, detail=error_hint)
         text = fetched
 
     content_hash = make_hash(text)
