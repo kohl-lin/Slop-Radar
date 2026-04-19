@@ -69,9 +69,16 @@ async def score_content(text: str) -> dict:
             "summary": text[:100],
         }
 
+    is_ai = result.get("is_ai_related")
+    signal = float(result.get("signal_score", 5))
+    # Heuristic: if LLM gave signal 0 and reason mentions non-AI topics, mark as non-AI
+    if is_ai is None:
+        reason = result.get("signal_reason", "").lower()
+        is_ai = not (signal == 0 and any(w in reason for w in ["health", "not ai", "no ai", "non-ai", "unrelated"]))
+
     return {
-        "is_ai_related": bool(result.get("is_ai_related", True)),
-        "signal_score": float(result.get("signal_score", 5)),
+        "is_ai_related": bool(is_ai),
+        "signal_score": signal,
         "signal_reason": result.get("signal_reason", "No reason provided."),
         "adds_value": bool(result.get("adds_value", True)),
         "summary": result.get("summary", text[:100]),

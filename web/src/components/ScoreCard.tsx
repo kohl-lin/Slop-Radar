@@ -68,10 +68,10 @@ export default function ScoreCard({ data }: { data: AnalyzeResult }) {
       </div>
 
       {/* Non-AI warning */}
-      {!data.is_ai_related && (
-        <div className="mb-4 px-3 py-2 rounded bg-[var(--yellow)] bg-opacity-15 border border-[var(--yellow)] border-opacity-40">
+      {data.is_ai_related === false && (
+        <div className="mb-4 px-3 py-2 rounded border-2 border-dashed border-[var(--yellow)]" style={{ backgroundColor: "rgba(212, 168, 74, 0.15)" }}>
           <p className="font-pixel text-[9px] text-[var(--brown)]">
-            ⚠️ This content does not appear to be AI-related. Scores may be less accurate.
+            ⚠️ NOT AI CONTENT — This doesn&apos;t appear to be about AI/ML. Scores may be less accurate.
           </p>
         </div>
       )}
