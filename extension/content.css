@@ -1,0 +1,214 @@
+/* === Slop Radar: Desert Theme Injection Styles === */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.slop-radar-btn {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  transition: background 0.15s;
+  position: relative;
+}
+
+.slop-radar-btn:hover {
+  background: rgba(196, 148, 58, 0.15);
+}
+
+.slop-beetle-icon {
+  font-size: 16px;
+  display: inline-block;
+}
+
+.slop-spin {
+  animation: slop-spin 0.8s linear infinite;
+}
+
+@keyframes slop-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.slop-radar-btn.slop-error .slop-beetle-icon {
+  filter: grayscale(1);
+}
+
+/* === Result Card — Desert === */
+
+.slop-radar-card {
+  font-family: 'Press Start 2P', monospace;
+  background: #fff8eb;
+  border: 2px solid #e8d5a3;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  color: #3d2b1a;
+  font-size: 9px;
+  line-height: 1.6;
+  image-rendering: pixelated;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(196, 148, 58, 0.15), 0 0 12px rgba(196, 148, 58, 0.06);
+}
+
+.slop-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed #dcc78e;
+}
+
+.slop-beetle-hero {
+  font-size: 20px;
+}
+
+.slop-card-title {
+  font-size: 11px;
+  color: #c4943a;
+  flex: 1;
+  letter-spacing: 1px;
+}
+
+.slop-card-close {
+  all: unset;
+  cursor: pointer;
+  color: #a89070;
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
+.slop-card-close:hover {
+  color: #c45a3a;
+}
+
+.slop-card-summary {
+  color: #7a6548;
+  margin-bottom: 10px;
+  font-family: -apple-system, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* === Score Bars === */
+
+.slop-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.slop-score-item {
+  position: relative;
+}
+
+.slop-score-bar {
+  height: 6px;
+  background: #e8d5a3;
+  border-radius: 3px;
+  margin-bottom: 4px;
+  position: relative;
+  overflow: hidden;
+  image-rendering: pixelated;
+}
+
+.slop-score-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--score-pct);
+  background: var(--bar-color);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.slop-score-label {
+  display: flex;
+  justify-content: space-between;
+  color: #7a6548;
+  font-size: 8px;
+}
+
+.slop-score-label strong {
+  color: #3d2b1a;
+}
+
+.slop-score-reason {
+  color: #a89070;
+  font-family: -apple-system, sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* === Sources === */
+
+.slop-sources {
+  border-top: 2px dashed #dcc78e;
+  padding-top: 8px;
+  margin-bottom: 8px;
+}
+
+.slop-sources-title {
+  color: #c4943a;
+  margin-bottom: 6px;
+  font-size: 8px;
+}
+
+.slop-source-link {
+  display: block;
+  color: #4a7a3a;
+  text-decoration: none;
+  font-family: -apple-system, sans-serif;
+  font-size: 11px;
+  padding: 3px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slop-source-link:hover {
+  color: #6b9e5a;
+}
+
+.slop-source-date {
+  color: #a89070;
+  font-size: 10px;
+  margin-left: 6px;
+}
+
+/* === Footer === */
+
+.slop-card-footer {
+  border-top: 2px dashed #dcc78e;
+  padding-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.slop-share-btn {
+  all: unset;
+  cursor: pointer;
+  background: #c4943a;
+  color: #fdf8ef;
+  padding: 4px 10px;
+  font-size: 8px;
+  font-family: 'Press Start 2P', monospace;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 rgba(92, 61, 30, 0.3);
+  text-decoration: none;
+}
+
+.slop-share-btn:hover {
+  background: #d4a84a;
+}

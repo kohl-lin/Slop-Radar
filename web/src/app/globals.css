@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  /* Desert palette */
+  --sand: #f5e6c8;
+  --sand-light: #faf3e3;
+  --sand-dark: #dcc78e;
+  --sand-deep: #c4a265;
+  --brown: #5c3d1e;
+  --brown-light: #6e4d2a;
+  --brown-dark: #3d2b1a;
+  --cactus: #6b9e5a;
+  --cactus-light: #7db56a;
+  --cactus-dark: #4a7a3a;
+  --gold: #c4943a;
+  --gold-light: #d4a84a;
+  --gold-bright: #e8c060;
+  --cream: #fdf8ef;
+  --warm-white: #f8f0e0;
+
+  /* Semantic */
+  --bg-main: #fdf8ef;
+  --bg-card: #fff8eb;
+  --bg-card-border: #e8d5a3;
+  --text-primary: #3d2b1a;
+  --text-secondary: #7a6548;
+  --text-muted: #a89070;
+  --accent: #c4943a;
+  --accent-hover: #d4a84a;
+
+  /* Score colors */
+  --green: #6b9e5a;
+  --yellow: #d4a030;
+  --red: #c45a3a;
+}
+
+* {
+  image-rendering: pixelated;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-pixel {
+  font-family: var(--font-pixel), monospace;
+}
+
+/* Sand texture overlay */
+.sand-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(196, 162, 101, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(196, 162, 101, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Beetle push animation — subtle bob */
+@keyframes beetle-push-anim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.5px); }
+}
+
+.beetle-push {
+  animation: beetle-push-anim 0.4s ease-in-out infinite;
+}
+
+/* Ball roll animation */
+@keyframes ball-roll-anim {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ball-roll {
+  animation: ball-roll-anim 1.2s linear infinite;
+}
+
+/* Wind particles drift */
+@keyframes wind-blow-anim {
+  0% { transform: translateX(0); opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { transform: translateX(4px); opacity: 0; }
+}
+
+.wind-blow {
+  animation: wind-blow-anim 2s ease-in-out infinite;
+}
+
+/* Generic beetle spin for inline loading */
+@keyframes beetle-roll {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.beetle-rolling {
+  animation: beetle-roll 1s linear infinite;
+}
+
+/* Score bar fill animation */
+@keyframes bar-fill {
+  from { width: 0; }
+  to { width: var(--bar-width); }
+}
+
+.score-bar-fill {
+  animation: bar-fill 0.8s ease-out forwards;
+}
+
+/* Desert card */
+.desert-card {
+  border: 2px solid var(--bg-card-border);
+  background: var(--bg-card);
+  box-shadow: 3px 3px 0 rgba(196, 148, 58, 0.15), 0 0 20px rgba(196, 148, 58, 0.06);
+}
+
+/* Desert button */
+.desert-btn {
+  font-family: var(--font-pixel), monospace;
+  background: var(--accent);
+  color: var(--cream);
+  box-shadow: 3px 3px 0 rgba(92, 61, 30, 0.3);
+  transition: all 0.1s;
+}
+
+.desert-btn:hover {
+  background: var(--accent-hover);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 rgba(92, 61, 30, 0.3);
+}
+
+.desert-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(92, 61, 30, 0.3);
+}

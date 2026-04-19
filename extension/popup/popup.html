@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 320px;
+      min-height: 200px;
+      background: #fdf8ef;
+      color: #3d2b1a;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      line-height: 1.8;
+      padding: 16px;
+      image-rendering: pixelated;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .hero-beetle {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 12px;
+      color: #5c3d1e;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      color: #a89070;
+      margin-top: 4px;
+      font-family: -apple-system, sans-serif;
+      font-size: 11px;
+    }
+
+    .paste-area {
+      width: 100%;
+      margin: 12px 0;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      background: #fff8eb;
+      border: 2px solid #e8d5a3;
+      color: #3d2b1a;
+      font-family: -apple-system, sans-serif;
+      font-size: 11px;
+      padding: 8px;
+      resize: vertical;
+      border-radius: 6px;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #c4943a;
+    }
+
+    button.analyze-btn {
+      all: unset;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #c4943a;
+      color: #fdf8ef;
+      padding: 8px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      border-radius: 4px;
+      box-shadow: 3px 3px 0 rgba(92, 61, 30, 0.3);
+    }
+
+    button.analyze-btn:hover { background: #d4a84a; }
+    button.analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .status {
+      margin-top: 10px;
+      color: #7a6548;
+      font-family: -apple-system, sans-serif;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .status strong { color: #3d2b1a; }
+
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      color: #a89070;
+      font-size: 7px;
+    }
+
+    .footer a { color: #c4943a; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="hero-beetle">🪲</span>
+    <h1>SLOP RADAR</h1>
+    <p class="tagline">Fight GIGO. Trace the source.</p>
+  </div>
+
+  <div class="paste-area">
+    <textarea id="input" placeholder="Paste a tweet, URL, or any AI news text..."></textarea>
+  </div>
+
+  <button class="analyze-btn" id="analyzeBtn">🪲 ANALYZE</button>
+
+  <div class="status" id="status"></div>
+
+  <div class="footer">
+    <a href="http://localhost:3000" target="_blank">Open Web Dashboard</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Pixel Icons</title></head>
+<body>
+<script>
+// Pixel art beetle icon generator — generates 16x16, 48x48, and 128x128 icons
+// Open this file in a browser, right-click each canvas to save as PNG
+
+const BEETLE_16 = [
+  "................",
+  "................",
+  "....##..##......",
+  "...#..##..#.....",
+  "...#.####.#.....",
+  "....######......",
+  "...########.....",
+  "..##.####.##....",
+  "..##.####.##....",
+  "..##.####.##....",
+  "...########.....",
+  "....##..##......",
+  "...#......#.....",
+  "..#........#....",
+  "................",
+  "................",
+];
+
+const COLORS = {
+  '#': '#7856ff',
+  '.': 'transparent',
+};
+
+function drawIcon(size) {
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  const px = size / 16;
+
+  ctx.imageSmoothingEnabled = false;
+
+  BEETLE_16.forEach((row, y) => {
+    [...row].forEach((char, x) => {
+      if (COLORS[char] && COLORS[char] !== 'transparent') {
+        ctx.fillStyle = COLORS[char];
+        ctx.fillRect(x * px, y * px, px, px);
+      }
+    });
+  });
+
+  canvas.style.border = '1px solid #333';
+  canvas.style.margin = '10px';
+  canvas.style.imageRendering = 'pixelated';
+  canvas.style.width = `${Math.max(size, 64)}px`;
+  canvas.style.height = `${Math.max(size, 64)}px`;
+
+  const label = document.createElement('div');
+  label.textContent = `${size}x${size} — Right-click → Save as icon-${size}.png`;
+  document.body.appendChild(label);
+  document.body.appendChild(canvas);
+}
+
+[16, 48, 128].forEach(drawIcon);
+</script>
+<p style="font-family:sans-serif; padding:20px;">Open this HTML file in a browser to generate the pixel beetle icons.<br>Right-click each canvas and "Save image as..." with the suggested filenames.</p>
+</body>
+</html>
