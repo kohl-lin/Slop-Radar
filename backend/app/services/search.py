@@ -24,18 +24,14 @@ async def find_sources(text: str, url: Optional[str] = None) -> List[Dict]:
         "type": "neural",
         "numResults": 5,
         "useAutoprompt": True,
-        "category": "research paper",
-        "includeDomains": [
-            "arxiv.org",
-            "openai.com",
-            "anthropic.com",
-            "deepmind.google",
-            "ai.meta.com",
-            "huggingface.co",
-            "x.com",
-            "twitter.com",
-            "github.com",
-            "blog.google",
+        "excludeDomains": [
+            "pinterest.com",
+            "quora.com",
+            "medium.com",
+            "linkedin.com",
+            "facebook.com",
+            "instagram.com",
+            "tiktok.com",
         ],
     }
 
